@@ -5,10 +5,12 @@ import {
   Grid,
   Pagination,
   Paper,
+  Stack,
   Typography,
 } from "@mui/material";
 import { UseApi } from "../../hooks/useApi";
 import { getCurrentPage } from "../../services/index";
+import styled from "@emotion/styled";
 
 export const Home = () => {
   const { payload, page, setPage } = UseApi();
@@ -33,6 +35,8 @@ export const Home = () => {
             </Paper>
           </Grid>
         ))}
+      </Grid>
+      <PaginationContainer>
         <Pagination
           count={payload?.info.pages}
           color="primary"
@@ -42,7 +46,12 @@ export const Home = () => {
             getCurrentPage(page);
           }}
         />
-      </Grid>
+      </PaginationContainer>
     </Container>
   );
 };
+
+const PaginationContainer = styled.div`
+  display: grid;
+  justify-content: end;
+`;
