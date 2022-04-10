@@ -6,6 +6,8 @@ import Toolbar from "@mui/material/Toolbar";
 import SearchIcon from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
+import { useTheme } from "@mui/system";
+import { ThemeRick } from "../../theme";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -50,9 +52,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const theme = useTheme(ThemeRick);
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ background: `${theme.palette.background.default}` }}
+      >
         <Toolbar sx={{ display: "grid", grid: "100% / 60% 40%" }}>
           <img
             src="rick-and-morty.png"

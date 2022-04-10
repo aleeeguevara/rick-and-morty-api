@@ -5,9 +5,41 @@ export type GetApiData = {
     next: string;
     prev: string | null;
   };
-  results: ResultsApi[];
+  results: Result[];
 };
 
-export type ResultsApi = {
-  [key: string]: string;
+export type Results = {
+  results: Result[];
+};
+
+export type Result = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: Origin;
+  location: Location;
+  image: string;
+  episode: string[];
+  url: string;
+  created: string;
+};
+
+export type Origin = {
+  name: string;
+  url: string;
+};
+
+export type Location = {
+  name: string;
+  url: string;
+};
+
+export type PropsCards = {
+  name: string;
+  status: string;
+  id: string;
+  image: string;
 };

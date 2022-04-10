@@ -11,7 +11,7 @@ export const UseApi = () => {
       const data = await getCurrentPage(page);
       setPayload(data);
     })();
-  }, [page]);
+  }, []);
   return {
     payload,
     page,

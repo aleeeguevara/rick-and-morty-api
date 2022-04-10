@@ -14,6 +14,7 @@ function App() {
         styles={{
           body: {
             background: "#242221",
+            overflowX: "hidden",
           },
         }}
       />
