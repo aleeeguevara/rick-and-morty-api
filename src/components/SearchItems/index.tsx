@@ -15,6 +15,7 @@ interface SearchProps {
   setName: (name: string) => void;
   getItemsByParams: () => void;
   handleStatus: (e: SelectChangeEvent) => void;
+  setError: (error: string) => void;
 }
 
 export default function SearchItems({
@@ -23,6 +24,7 @@ export default function SearchItems({
   setName,
   getItemsByParams,
   handleStatus,
+  setError,
 }: SearchProps) {
   const theme = useTheme(ThemeRick);
 
@@ -46,12 +48,19 @@ export default function SearchItems({
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
           value={name}
+          onClick={() => setError("")}
           onChange={(e) => {
             setName(e.target.value);
           }}
         />
       </Search>
-      <Button sx={{ width: "100px" }} onClick={() => getItemsByParams()}>
+      <Button
+        sx={{ width: "100px" }}
+        onClick={() => {
+          getItemsByParams();
+          setName("");
+        }}
+      >
         <SearchIcon color="primary" />
       </Button>
     </Box>

@@ -2,7 +2,7 @@ export type GetApiData = {
   info: {
     count: number;
     pages: number;
-    next: string;
+    next: string | null;
     prev: string | null;
   };
   results: Result[];

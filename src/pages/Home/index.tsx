@@ -1,10 +1,14 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/system";
 import { ThemeRick } from "../../theme";
 import { getNameAndStatus } from "../../services";
 import SearchItems from "../../components/SearchItems";
 import { SearchItemsHook } from "../../hooks/SearchItemsHook";
+import { Cards } from "../../components/Cards";
+import { Container, Typography } from "@mui/material";
+import { Result } from "../../types";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 export default function Home() {
   const theme = useTheme(ThemeRick);
@@ -16,12 +20,25 @@ export default function Home() {
     setPayloadSearched,
     handleStatus,
   } = SearchItemsHook();
+  const [error, setError] = useState("");
 
   const getItemsByParams = async () => {
     if (name.length > 2) {
-      const data = await getNameAndStatus(name, status);
-      setPayloadSearched(data);
-      setName("");
+      try {
+        const data = await getNameAndStatus(name, status);
+        setPayloadSearched(data);
+      } catch {
+        setPayloadSearched({
+          info: {
+            count: 0,
+            pages: 0,
+            next: null,
+            prev: null,
+          },
+          results: [],
+        });
+        setError("erro");
+      }
     }
   };
 
@@ -35,8 +52,20 @@ export default function Home() {
         setName={setName}
         getItemsByParams={getItemsByParams}
         handleStatus={handleStatus}
+        setError={setError}
       />
-      carfds
+      <Container>
+        {payloadSearched?.results.map((result: Result) => (
+          <Cards result={result} key={result.id} />
+        ))}
+
+        {payloadSearched?.results.length === 0 && error === "erro" && (
+          <Typography variant="h2" component="h2" color="primary">
+            <SentimentVeryDissatisfiedIcon sx={{ fontSize: "50px" }} />
+            {` Sorry! Could you try another name?  we couldn't find "${name}".`}
+          </Typography>
+        )}
+      </Container>
     </Box>
   );
 }

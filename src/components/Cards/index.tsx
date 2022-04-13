@@ -36,6 +36,9 @@ export const Cards = ({ result }: ICards) => {
           <Typography variant="body1" component="p">
             {result.status}
           </Typography>
+          <Typography variant="body1" component="p">
+            {result.species}
+          </Typography>
         </CardContainer>
       </Paper>
     </Grid>
@@ -44,5 +47,5 @@ export const Cards = ({ result }: ICards) => {
 
 const CardContainer = styled.div`
   display: grid;
-  grid: 50% 50% / 100%;
+  grid: 50% 25% 25% / 100%;
 `;
