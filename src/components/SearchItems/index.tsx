@@ -1,7 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { useTheme } from "@mui/system";
-import { ThemeRick } from "../../theme";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, SelectChangeEvent } from "@mui/material";
 import { Search, StyledInputBase } from "../../components/Header/styles";
@@ -26,21 +24,19 @@ export default function SearchItems({
   handleStatus,
   setError,
 }: SearchProps) {
-  const theme = useTheme(ThemeRick);
-
   return (
     <Container
       sx={{
         display: "grid",
         justifyContent: "end",
-        minWidth: "300px",
+        minWidth: "400px",
+        flexGrow: 1,
       }}
     >
       <Box
         sx={{
-          flexGrow: 1,
           display: "grid",
-          grid: "40px / 2fr 6fr 40px",
+          grid: "40px / 2fr 3fr 40px",
           padding: "1rem",
         }}
       >

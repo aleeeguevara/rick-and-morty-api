@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { useTheme } from "@mui/system";
-import { ThemeRick } from "../../theme";
 import { getNameAndStatus } from "../../services";
 import SearchItems from "../../components/SearchItems";
 import { SearchItemsHook } from "../../hooks/SearchItemsHook";
 import { Cards } from "../../components/Cards";
-import { Container, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Result } from "../../types";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { UseApi } from "../../hooks/useApi";
+import { PaginationComponent } from "../../components/pagination";
 
 export default function Home() {
-  const theme = useTheme(ThemeRick);
   const {
     name,
     setName,
@@ -20,7 +19,11 @@ export default function Home() {
     setPayloadSearched,
     handleStatus,
   } = SearchItemsHook();
+  const { page, setPage } = UseApi();
+
   const [error, setError] = useState("");
+  const itemsPerpage = 10;
+  const items = payloadSearched?.results;
 
   const getItemsByParams = async () => {
     if (name.length > 2) {
@@ -42,10 +45,12 @@ export default function Home() {
     }
   };
 
-  console.log("trouxe", payloadSearched);
+  const indexOfLastItem = page * itemsPerpage;
+  const indexOffirstItem = indexOfLastItem - itemsPerpage;
+  const currentPost = items?.slice(indexOffirstItem, indexOfLastItem);
 
   return (
-    <Container>
+    <Container sx={{ flexGrow: 1 }}>
       <SearchItems
         name={name}
         status={status}
@@ -54,8 +59,8 @@ export default function Home() {
         handleStatus={handleStatus}
         setError={setError}
       />
-      <Container>
-        {payloadSearched?.results.map((result: Result) => (
+      <Grid container spacing={3} sx={{ justifyContent: "center" }}>
+        {currentPost?.map((result: Result) => (
           <Cards result={result} key={result.id} />
         ))}
 
@@ -65,7 +70,12 @@ export default function Home() {
             {` Sorry! Could you try another name?  we couldn't find "${name}".`}
           </Typography>
         )}
-      </Container>
+      </Grid>
+      <PaginationComponent
+        page={page}
+        setPage={setPage}
+        payload={payloadSearched}
+      />
     </Container>
   );
 }
