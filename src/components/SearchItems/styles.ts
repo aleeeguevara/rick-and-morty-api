@@ -6,7 +6,7 @@ export const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    border: `2px solid ${theme.palette.primary.main}`,
+    border: `1px solid ${theme.palette.primary.light}`,
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
@@ -28,7 +28,7 @@ export const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: `${theme.palette.primary}`,
+  color: `${theme.palette.secondary.dark}`,
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,

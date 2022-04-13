@@ -6,13 +6,16 @@ export const searchByParameter = async (
   param: string,
   page: number,
   setPage: any,
-  setSearchFor: any
+  setSearchFor: any,
+  setSearched: any,
+  setPagesInfo: any
 ) => {
   const data = await getCurrentPage(page);
   const dataSearched = data.results.filter((item: any) => item[attr] === param);
   if (dataSearched) {
     setSearchFor(dataSearched);
-    console.log(dataSearched);
+    setSearched("");
+    setPagesInfo(data.info.pages);
   } else {
     setPage(page + 1);
   }

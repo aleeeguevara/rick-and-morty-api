@@ -7,12 +7,21 @@ export const UseApi = () => {
   const [payload, setPayload] = useState<GetApiData>();
   const [page, setPage] = useState<number>(1);
   const [option, setOption] = useState("name");
-  const [searchFor, setSearchFor] = useState<Result | Results>();
+  const [searchFor, setSearchFor] = useState<any>();
   const [searched, setSearched] = useState("");
+  const [pagesInfo, setPagesInfo] = useState();
 
   useEffect(() => {
     if (searched.length >= 3) {
-      searchByParameter(option, searched, page, setPage, setSearchFor);
+      searchByParameter(
+        option,
+        searched,
+        page,
+        setPage,
+        setSearchFor,
+        setSearched,
+        setPagesInfo
+      );
     }
     (async () => {
       const data = await getCurrentPage(page);
@@ -21,11 +30,15 @@ export const UseApi = () => {
   }, [page, searched, setPayload]);
   return {
     payload,
+    setSearched,
+    setOption,
+    option,
+    searchFor,
     page,
     setPage,
-    setOption,
-    setSearched,
-    searchFor,
-    option,
+    pagesInfo,
+    searched,
+    setSearchFor,
+    setPagesInfo,
   };
 };

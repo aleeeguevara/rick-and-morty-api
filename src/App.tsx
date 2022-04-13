@@ -3,10 +3,10 @@ import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-import { Home } from "./pages/Home";
 import { ThemeRick } from "./theme";
 import { GlobalStyles } from "@mui/material";
-import { Search } from "./pages/Search";
+import Home from "./pages/Home";
+import { Characters } from "./pages/Characters";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/characters" element={<Characters />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

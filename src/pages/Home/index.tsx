@@ -1,38 +1,42 @@
-import React from "react";
-import { Container, Grid, Pagination } from "@mui/material";
-import { UseApi } from "../../hooks/useApi";
-import { getCurrentPage } from "../../services/index";
-import styled from "@emotion/styled";
-import { Cards } from "../../components/Cards";
-import { Result } from "../../types";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/system";
+import { ThemeRick } from "../../theme";
+import { getNameAndStatus } from "../../services";
+import SearchItems from "../../components/SearchItems";
+import { SearchItemsHook } from "../../hooks/SearchItemsHook";
 
-export const Home = () => {
-  const { payload, page, setPage } = UseApi();
+export default function Home() {
+  const theme = useTheme(ThemeRick);
+  const {
+    name,
+    setName,
+    status,
+    payloadSearched,
+    setPayloadSearched,
+    handleStatus,
+  } = SearchItemsHook();
+
+  const getItemsByParams = async () => {
+    if (name.length > 2) {
+      const data = await getNameAndStatus(name, status);
+      setPayloadSearched(data);
+      setName("");
+    }
+  };
+
+  console.log("trouxe", payloadSearched);
 
   return (
-    <Container sx={{ margin: "2rem", display: "grid" }} maxWidth={false}>
-      <Grid container spacing={3} sx={{ justifyContent: "center" }}>
-        {payload?.results.map((result: Result) => (
-          <Cards result={result} key={result.id} />
-        ))}
-        ;
-      </Grid>
-      <PaginationContainer>
-        <Pagination
-          count={payload?.info.pages}
-          color="primary"
-          page={page}
-          onChange={(event, page) => {
-            setPage(page);
-            getCurrentPage(page);
-          }}
-        />
-      </PaginationContainer>
-    </Container>
+    <Box sx={{ flexGrow: 1 }}>
+      <SearchItems
+        name={name}
+        status={status}
+        setName={setName}
+        getItemsByParams={getItemsByParams}
+        handleStatus={handleStatus}
+      />
+      carfds
+    </Box>
   );
-};
-
-const PaginationContainer = styled.div`
-  display: grid;
-  justify-content: end;
-`;
+}
