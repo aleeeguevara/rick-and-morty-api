@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/system";
 import { ThemeRick } from "../../theme";
 import SearchIcon from "@mui/icons-material/Search";
-import { SelectChangeEvent } from "@mui/material";
+import { Container, SelectChangeEvent } from "@mui/material";
 import { Search, StyledInputBase } from "../../components/Header/styles";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -29,40 +29,47 @@ export default function SearchItems({
   const theme = useTheme(ThemeRick);
 
   return (
-    <Box
+    <Container
       sx={{
-        flexGrow: 1,
         display: "grid",
         justifyContent: "end",
-        grid: "40px / 40% 50% 10%",
-        padding: "1rem",
+        minWidth: "300px",
       }}
     >
-      <Select value={status} label="Status" onChange={handleStatus}>
-        <MenuItem value={"Alive"}>Alive</MenuItem>
-        <MenuItem value={"Dead"}>Dead</MenuItem>
-        <MenuItem value={"Unknown"}>Unknown</MenuItem>
-      </Select>
-      <Search>
-        <StyledInputBase
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-          value={name}
-          onClick={() => setError("")}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-      </Search>
-      <Button
-        sx={{ width: "100px" }}
-        onClick={() => {
-          getItemsByParams();
-          setName("");
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: "grid",
+          grid: "40px / 2fr 6fr 40px",
+          padding: "1rem",
         }}
       >
-        <SearchIcon color="primary" />
-      </Button>
-    </Box>
+        <Select value={status} label="Status" onChange={handleStatus}>
+          <MenuItem value={"Alive"}>Alive</MenuItem>
+          <MenuItem value={"Dead"}>Dead</MenuItem>
+          <MenuItem value={"Unknown"}>Unknown</MenuItem>
+        </Select>
+        <Search>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+            value={name}
+            onClick={() => setError("")}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </Search>
+        <Button
+          sx={{ width: "5px" }}
+          onClick={() => {
+            getItemsByParams();
+            setName("");
+          }}
+        >
+          <SearchIcon color="primary" sx={{ fontSize: "30px" }} />
+        </Button>
+      </Box>
+    </Container>
   );
 }

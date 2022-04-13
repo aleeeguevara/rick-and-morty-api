@@ -45,7 +45,7 @@ export default function Home() {
   console.log("trouxe", payloadSearched);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Container>
       <SearchItems
         name={name}
         status={status}
@@ -66,6 +66,6 @@ export default function Home() {
           </Typography>
         )}
       </Container>
-    </Box>
+    </Container>
   );
 }
