@@ -8,6 +8,8 @@ import { GlobalStyles } from "@mui/material";
 import Home from "./pages/Home";
 import { Characters } from "./pages/Characters";
 import Profile from "./pages/Profile";
+import SearchByName from "./pages/SearchByName";
+import SearchByStatus from "./pages/SearchByStatus";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<Characters />} />
           <Route path="/:id" element={<Profile />} />
+          <Route path="/search-by-name" element={<SearchByName />} />
+          <Route path="/search-by-status" element={<SearchByStatus />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

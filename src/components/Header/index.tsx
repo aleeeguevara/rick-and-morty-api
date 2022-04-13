@@ -6,17 +6,20 @@ import { useTheme } from "@mui/system";
 import { ThemeRick } from "../../theme";
 import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import { Container } from "@mui/material";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 
 export default function Header() {
   const theme = useTheme(ThemeRick);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, minWidth: "350px" }}>
       <AppBar
         position="static"
         sx={{ background: `${theme.palette.background.default}` }}
       >
-        <Toolbar sx={{ display: "grid", grid: "100% / 90%  10%" }}>
+        <Toolbar sx={{ display: "grid", grid: "100% / 80% 20%" }}>
           <Link to="/">
             <img
               src="rick-and-morty.png"
@@ -27,9 +30,24 @@ export default function Header() {
               }}
             />
           </Link>
-          <Link to="/characters">
-            <PersonIcon color="secondary" />
-          </Link>
+          <Container
+            sx={{
+              display: "grid",
+              grid: "100%/ 1fr 1fr 1fr",
+              alignItems: "center",
+              justifyContent: "end",
+            }}
+          >
+            <Link to="/characters">
+              <PersonIcon color="secondary" />
+            </Link>
+            <Link to="/search-by-name">
+              <BorderColorIcon color="secondary" />
+            </Link>
+            <Link to="/search-by-status">
+              <MonitorHeartIcon color="secondary" />
+            </Link>
+          </Container>
         </Toolbar>
       </AppBar>
     </Box>

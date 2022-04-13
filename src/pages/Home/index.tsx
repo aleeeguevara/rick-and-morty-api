@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
 import { getNameAndStatus } from "../../services";
 import SearchItems from "../../components/SearchItems";
 import { SearchItemsHook } from "../../hooks/SearchItemsHook";
@@ -24,6 +23,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const itemsPerpage = 10;
   const items = payloadSearched?.results;
+  console.log(items);
 
   const getItemsByParams = async () => {
     if (name.length > 2) {
@@ -64,6 +64,22 @@ export default function Home() {
         {currentPost?.map((result: Result) => (
           <Cards result={result} key={result.id} />
         ))}
+
+        {items === undefined && (
+          <Container
+            sx={{ display: "grid", margin: "1rem", justifyItems: "center" }}
+          >
+            <Typography
+              variant="h2"
+              component="h2"
+              color="primary"
+              align="center"
+            >
+              Try & search for your favorite character and his status!
+            </Typography>
+            <img src="background.png" alt="rick-and-morty" />
+          </Container>
+        )}
 
         {items?.length === 0 && error === "erro" && (
           <Typography variant="h2" component="h2" color="primary">

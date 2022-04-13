@@ -42,7 +42,7 @@ export default function SearchItems({
           padding: "1rem",
         }}
       >
-        <Select value={status} label="Status" onChange={handleStatus}>
+        <Select value={status} onChange={handleStatus}>
           <MenuItem value={"Alive"}>Alive</MenuItem>
           <MenuItem value={"Dead"}>Dead</MenuItem>
           <MenuItem value={"Unknown"}>Unknown</MenuItem>

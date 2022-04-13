@@ -23,3 +23,24 @@ export const getProfileById = async (id: string | undefined) => {
   const data = await response.data;
   return data;
 };
+
+export const getCurrentPageByName = async (
+  page: number,
+  name: string | undefined
+) => {
+  const response: AxiosResponse<GetApiData> = await axios.get(
+    `https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`
+  );
+  const data = await response.data;
+  return data;
+};
+export const getCurrentPageByStatus = async (
+  page: number,
+  status: string | undefined
+) => {
+  const response: AxiosResponse<GetApiData> = await axios.get(
+    `https://rickandmortyapi.com/api/character/?page=${page}&status=${status}`
+  );
+  const data = await response.data;
+  return data;
+};
