@@ -14,6 +14,7 @@ interface SearchProps {
   getItemsByParams: () => void;
   handleStatus: (e: SelectChangeEvent) => void;
   setError: (error: string) => void;
+  setPage: (number: number) => void;
 }
 
 export default function SearchItems({
@@ -23,6 +24,7 @@ export default function SearchItems({
   getItemsByParams,
   handleStatus,
   setError,
+  setPage,
 }: SearchProps) {
   return (
     <Container
@@ -61,6 +63,7 @@ export default function SearchItems({
           onClick={() => {
             getItemsByParams();
             setName("");
+            setPage(1);
           }}
         >
           <SearchIcon color="primary" sx={{ fontSize: "30px" }} />

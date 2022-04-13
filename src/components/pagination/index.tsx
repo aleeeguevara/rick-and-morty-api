@@ -24,7 +24,6 @@ export const PaginationComponent = ({
           page={page}
           onChange={(event, page) => {
             setPage(page);
-            getCurrentPage(page);
           }}
         />
       </PaginationContainer>

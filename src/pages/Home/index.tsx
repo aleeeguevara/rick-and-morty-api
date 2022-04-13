@@ -58,24 +58,27 @@ export default function Home() {
         getItemsByParams={getItemsByParams}
         handleStatus={handleStatus}
         setError={setError}
+        setPage={setPage}
       />
       <Grid container spacing={3} sx={{ justifyContent: "center" }}>
         {currentPost?.map((result: Result) => (
           <Cards result={result} key={result.id} />
         ))}
 
-        {payloadSearched?.results.length === 0 && error === "erro" && (
+        {items?.length === 0 && error === "erro" && (
           <Typography variant="h2" component="h2" color="primary">
             <SentimentVeryDissatisfiedIcon sx={{ fontSize: "50px" }} />
             {` Sorry! Could you try another name?  we couldn't find "${name}".`}
           </Typography>
         )}
       </Grid>
-      <PaginationComponent
-        page={page}
-        setPage={setPage}
-        payload={payloadSearched}
-      />
+      {items !== undefined && items.length >= 1 && (
+        <PaginationComponent
+          page={page}
+          setPage={setPage}
+          payload={payloadSearched}
+        />
+      )}
     </Container>
   );
 }

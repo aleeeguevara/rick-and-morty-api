@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { Result } from "../../types";
 import { useTheme } from "@mui/system";
 import { ThemeRick } from "../../theme/index";
+import { Link } from "react-router-dom";
 
 interface ICards {
   result: Result;
@@ -24,11 +25,13 @@ export const Cards = ({ result }: ICards) => {
           minWidth: "350px",
         }}
       >
-        <Avatar
-          alt={result.name}
-          src={result.image}
-          sx={{ width: 150, height: 150 }}
-        />
+        <Link to={`/${result.id}`}>
+          <Avatar
+            alt={result.name}
+            src={result.image}
+            sx={{ width: 150, height: 150 }}
+          />
+        </Link>
         <CardContainer>
           <Typography variant="h6" component="h3">
             {result.name}

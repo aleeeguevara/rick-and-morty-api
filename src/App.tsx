@@ -7,6 +7,7 @@ import { ThemeRick } from "./theme";
 import { GlobalStyles } from "@mui/material";
 import Home from "./pages/Home";
 import { Characters } from "./pages/Characters";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<Characters />} />
+          <Route path="/:id" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
