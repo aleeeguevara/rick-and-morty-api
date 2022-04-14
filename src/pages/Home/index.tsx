@@ -23,7 +23,6 @@ export default function Home() {
   const [error, setError] = useState("");
   const itemsPerpage = 10;
   const items = payloadSearched?.results;
-  console.log(items);
 
   const getItemsByParams = async () => {
     if (name.length > 2) {

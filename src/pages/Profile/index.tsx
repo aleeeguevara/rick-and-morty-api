@@ -22,7 +22,6 @@ export default function Profile() {
         setProfilePayload(data);
       } catch (error) {
         setError("error");
-        console.log(error);
       }
     })();
   }, [id]);
