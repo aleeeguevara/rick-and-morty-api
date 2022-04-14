@@ -49,7 +49,7 @@ export default function SearchItems({
         </Select>
         <Search>
           <StyledInputBase
-            placeholder="Search…"
+            placeholder="Search name"
             inputProps={{ "aria-label": "search" }}
             value={name}
             onClick={() => setError("")}
