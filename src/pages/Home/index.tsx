@@ -66,7 +66,12 @@ export default function Home() {
 
         {items === undefined && (
           <Container
-            sx={{ display: "grid", margin: "1rem", justifyItems: "center" }}
+            sx={{
+              display: "grid",
+              margin: "1rem",
+              justifyItems: "center",
+              minWidth: "300px",
+            }}
           >
             <Typography
               variant="h2"
@@ -79,6 +84,7 @@ export default function Home() {
             <img
               src={process.env.PUBLIC_URL + "/background.png"}
               alt="rick-and-morty"
+              style={{ minWidth: "300px" }}
             />
           </Container>
         )}
