@@ -84,7 +84,7 @@ export default function Home() {
             <img
               src={process.env.PUBLIC_URL + "/background.png"}
               alt="rick-and-morty"
-              style={{ minWidth: "300px" }}
+              style={{ minWidth: "200px" }}
             />
           </Container>
         )}
