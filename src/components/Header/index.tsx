@@ -17,7 +17,7 @@ export default function Header() {
     <Box sx={{ flexGrow: 1, minWidth: "350px" }}>
       <AppBar
         position="static"
-        sx={{ background: `${theme.palette.background.default}` }}
+        sx={{ background: `${theme.palette.background.paper}` }}
       >
         <Toolbar sx={{ display: "grid", grid: "100% / 80% 20%" }}>
           <Link to="/">
