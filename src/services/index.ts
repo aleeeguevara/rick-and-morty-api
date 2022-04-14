@@ -44,3 +44,13 @@ export const getCurrentPageByStatus = async (
   const data = await response.data;
   return data;
 };
+export const getCurrentPageBySpecies = async (
+  page: number,
+  specie: string | undefined
+) => {
+  const response: AxiosResponse<GetApiData> = await axios.get(
+    `https://rickandmortyapi.com/api/character/?page=${page}&species=${specie}`
+  );
+  const data = await response.data;
+  return data;
+};

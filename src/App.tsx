@@ -10,6 +10,7 @@ import { Characters } from "./pages/Characters";
 import Profile from "./pages/Profile";
 import SearchByName from "./pages/SearchByName";
 import SearchByStatus from "./pages/SearchByStatus";
+import SearchBySpecies from "./pages/Species";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/:id" element={<Profile />} />
           <Route path="/search-by-name" element={<SearchByName />} />
           <Route path="/search-by-status" element={<SearchByStatus />} />
+          <Route path="/search-by-species" element={<SearchBySpecies />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
