@@ -77,7 +77,7 @@ export default function Home() {
               Try & search for your favorite character and his status!
             </Typography>
             <img
-              src={process.env.PUBLIC_URL + "background.png"}
+              src={process.env.PUBLIC_URL + "/background.png"}
               alt="rick-and-morty"
             />
           </Container>

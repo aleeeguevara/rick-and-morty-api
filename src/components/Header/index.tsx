@@ -24,7 +24,7 @@ export default function Header() {
         <Toolbar sx={{ display: "grid", grid: "100% / 80% 20%" }}>
           <Link to="/">
             <img
-              src="rick-and-morty.png"
+              src={process.env.PUBLIC_URL + "/rick-and-morty.png"}
               alt="logo rick-and-morty"
               style={{
                 width: "200px",
